@@ -46,9 +46,8 @@ jobs:
           labels: |
             update
           assignees: |
-          	foo
-          	bar
-         
+            user1
+
 ```
 
 ## License

@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/tarosky/framhand-wp-action.git"
   },
   "keywords": [
     "GitHub",
