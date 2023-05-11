@@ -1,13 +1,18 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Check up-to-date with WP'
+description: 'Check if the plugin or theme is up-to-date with the latest WordPress'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
-    required: true
-    default: '1000'
+  readme:
+    description: 'Readme file to where "Tested up to" is written.'
+    required: false
+    default: 'README.md'
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  should_update:
+    description: 'Should update WordPress or not.'
+  version:
+    description: ''
 runs:
   using: 'node16'
   main: 'dist/index.js'
+branding:
+  color: 'blue'
+  icon: 'refresh-cw'

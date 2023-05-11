@@ -1,18 +1,19 @@
-const core = require('@actions/core');
-const wait = require('./wait');
+import core from '@actions/core';
+import { parseReadme, wpVersionFresh } from '@tarosky/farmhand/src/parser/index.js';
+import { latestWpVersion } from "@tarosky/farmhand/src/request/index.js";
+import { promises as fs } from 'fs';
 
-
-// most @actions toolkit packages have async methods
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
-
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
-
-    core.setOutput('time', new Date().toTimeString());
+    const readme = core.getInput('readme') || 'README.md';
+    const readmeFile = await fs.readFile( readme, 'utf8' );
+    const parsed = parseReadme( readmeFile.toString() );
+    if ( ! parsed.tested_up_to ) {
+      throw new Error( 'Could not find Tested Up to in ' + readme );
+    }
+    const latest = await latestWpVersion();
+    core.setOutput('should_update', ! wpVersionFresh( parsed.tested_up_to, latest ) );
+    core.setOutput('version', latest );
   } catch (error) {
     core.setFailed(error.message);
   }
