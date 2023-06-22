@@ -27,7 +27,7 @@
   "homepage": "https://github.com/actions/javascript-action#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@tarosky/farmhand": "^1.2.2"
+    "@tarosky/farmhand": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
