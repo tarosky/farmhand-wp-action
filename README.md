@@ -36,7 +36,7 @@ jobs:
         uses: actions-ecosystem/action-create-issue@v1
         with:
           github_token: ${{ secrets.github_token }}
-          title: ${{ steps.wp_version.outputs.version }}
+          title: Check compatibility with WordPress ${{ steps.wp_version.outputs.version }}
           body: |
             ## TODO
 
