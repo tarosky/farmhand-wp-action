@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Check wp version
-        uses: tarosky/farmhand-wp-aciton@v1
+        uses: tarosky/farmhand-wp-action@v1
         id: wp_version
         with:
           readme: readm.txt # Path to your readme. Default "README.md".
