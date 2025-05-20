@@ -32,7 +32,7 @@ jobs:
           readme: readm.txt # Path to your readme. Default "README.md".
 
       - name: Update Issue if needed
-        if: steps.wp_version.outputs.should_update
+        if: ${{ 'true' == steps.wp_version.outputs.should_update }}
         uses: actions-ecosystem/action-create-issue@v1
         with:
           github_token: ${{ secrets.github_token }}
